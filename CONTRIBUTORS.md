@@ -8,4 +8,6 @@
 
 ## รายชื่อ
 
+-pheerati
+
 - instructor — ผู้ดูแล repo (ทุกฟีเจอร์)

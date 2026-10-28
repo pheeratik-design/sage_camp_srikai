@@ -7,7 +7,7 @@
 ```
 
 ## รายชื่อ
-
+Miss USA PATTASEN : Computer technician
 - instructor — ผู้ดูแล repo (ทุกฟีเจอร์)
 
 - ภีรติ กระแจะจันทร์ นักวิชาการคอมพิวเตอร์

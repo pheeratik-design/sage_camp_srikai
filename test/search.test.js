@@ -57,6 +57,12 @@ test('GET /api/search ตัดช่องว่างหัว-ท้ายค
   );
 });
 
+test('GET /api/search คำค้นที่มีแต่ช่องว่าง → ได้ทุกรายการ', async () => {
+  const res = await srv.request('GET', '/api/search?q=' + encodeURIComponent('   '));
+  assert.equal(res.status, 200);
+  assert.equal(res.data.length, 2);
+});
+
 test('GET /api/search คำค้นอักขระพิเศษ "(" ไม่ทำให้ server พัง', async () => {
   const res = await srv.request('GET', '/api/search?q=' + encodeURIComponent('('));
   assert.equal(res.status, 200);

@@ -7,20 +7,18 @@
 
 export function register(router, { store }) {
   // GET /api/search?q=<คำค้น> — ค้นใน title และ body ไม่สนตัวพิมพ์ใหญ่-เล็ก
-  // ไม่ใช้ RegExp จากคำค้น (ใช้ includes) เพื่อให้อักขระพิเศษ เช่น "(" ไม่ทำให้ server พัง
+  // ใช้ includes แทน RegExp เพื่อให้อักขระพิเศษ เช่น "(" ไม่ทำให้ server พัง
   router.get('/search', (req, res) => {
-    // Express อาจได้ q เป็น array หรือ object ถ้าส่งซ้ำ จึงรับเฉพาะ string
-    const raw = typeof req.query.q === 'string' ? req.query.q : '';
-    const keyword = raw.trim().toLowerCase();
+    // ถ้าส่ง q ซ้ำ Express จะได้ array — รับเฉพาะ string
+    const keyword = typeof req.query.q === 'string' ? req.query.q.trim().toLowerCase() : '';
     const items = store.list();
 
     if (!keyword) return res.json(items);
-
-    const results = items.filter(
-      (item) =>
-        String(item.title ?? '').toLowerCase().includes(keyword) ||
-        String(item.body ?? '').toLowerCase().includes(keyword),
-    );
-    res.json(results);
+    res.json(items.filter((item) => matches(item, keyword)));
   });
+}
+
+// title และ body ผ่าน validateAnnouncement มาแล้วเสมอ จึงเป็น string
+function matches(item, keyword) {
+  return item.title.toLowerCase().includes(keyword) || item.body.toLowerCase().includes(keyword);
 }

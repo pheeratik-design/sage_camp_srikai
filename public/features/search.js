@@ -8,21 +8,15 @@ export function init(ctx) {
   input.placeholder = 'ค้นหาประกาศ...';
   input.setAttribute('aria-label', 'ค้นหาประกาศ');
 
-  let keyword = '';
-
-  // ตัวกรอง: แสดงประกาศที่ title หรือ body มีคำค้น (ไม่สนตัวพิมพ์ใหญ่-เล็ก, ไม่ใช้ RegExp)
+  // ตัวกรอง: อ่านคำค้นจากช่องทุกครั้ง — ว่างหรือมีแต่ช่องว่างจะแสดงทุกรายการ
+  // แสดงประกาศที่ title หรือ body มีคำค้น (ไม่สนตัวพิมพ์ใหญ่-เล็ก, ไม่ใช้ RegExp)
   ctx.addFilter((item) => {
+    const keyword = input.value.trim().toLowerCase();
     if (!keyword) return true;
-    return (
-      String(item.title ?? '').toLowerCase().includes(keyword) ||
-      String(item.body ?? '').toLowerCase().includes(keyword)
-    );
+    return item.title.toLowerCase().includes(keyword) || item.body.toLowerCase().includes(keyword);
   });
 
-  input.addEventListener('input', () => {
-    keyword = input.value.trim().toLowerCase();
-    ctx.render();
-  });
+  input.addEventListener('input', () => ctx.render());
 
   ctx.toolbar.append(input);
 }

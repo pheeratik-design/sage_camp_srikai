@@ -7,5 +7,5 @@
 ```
 
 ## รายชื่อ
-kj;lk;kldfdfdsf
+Miss USA PATTASEN : Computer technician
 - instructor — ผู้ดูแล repo (ทุกฟีเจอร์)

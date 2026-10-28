@@ -6,3 +6,4 @@
 ห้องประชุม: ห้องอบรม SAGE Camp ชั้น 2 อาคา ODL1
 เวลาประชุมทีม: 10:00
 ช่องทางติดต่อ: GitHub Discussions ของ repo นี้
+rulesetse

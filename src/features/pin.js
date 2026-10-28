@@ -6,5 +6,11 @@
 // store  = ตัวเก็บข้อมูล: list() · get(id) · create({title, body}) · update(id, patch) · remove(id)
 
 export function register(router, { store }) {
-  // TODO(feature/pin): เพิ่ม route ของฟีเจอร์ที่นี่
+  router.post('/announcements/:id/pin', (req, res) => {
+    const id = Number(req.params.id);
+    const item = store.get(id);
+    if (!item) return res.status(404).json({ error: 'ไม่พบประกาศ' });
+    const updated = store.update(id, { pinned: !item.pinned });
+    res.json(updated);
+  });
 }

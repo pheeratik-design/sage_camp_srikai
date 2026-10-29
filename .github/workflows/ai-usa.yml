@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   review:
-    # PR จาก fork ไม่มีสิทธิ์เข้าถึง secret — ข้ามไป
+    # PR จาก fork ไม่มีสิทธิ์เข้าถึง secret — --ข้ามไป
     if: github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 5

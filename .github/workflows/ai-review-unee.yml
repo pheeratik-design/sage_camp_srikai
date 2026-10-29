@@ -7,7 +7,7 @@ on:
 permissions:
   contents: read
   pull-requests: write
-  issues: write
+  issues: write 
 
 concurrency:
   group: ai-review-${{ github.event.pull_request.number }}
@@ -36,4 +36,4 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           BASE_REF: ${{ github.event.pull_request.base.ref }}
-        run: node scripts/ai-review.js
+        run: node scripts/ai-review-unee.js

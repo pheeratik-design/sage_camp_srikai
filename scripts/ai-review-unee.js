@@ -2,7 +2,7 @@
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 
-const {
+const { 
   OPENROUTER_API_KEY,
   OPENROUTER_MODEL = 'anthropic/claude-sonnet-4.5',
   GITHUB_TOKEN,
